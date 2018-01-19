@@ -1,1 +1,4 @@
-# DrawerOverlayService
+# LeftOverlayService
+脱胎与Launcher3-Now桌面，支持把另一个App当做当前APP的界面集成进来，此项目反编译了GoogleSearchBar的Service实现代码，并制作成Module以供使用。
+# 实现原理
+两个APP通过AIDL通信，第一个APP绑定第二个APP，第二个APP收到绑定要求时根据传入的参数创建View并显示。
