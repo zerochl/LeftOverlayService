@@ -28,25 +28,28 @@ public abstract class OverlaysController {
 
     public final synchronized IBinder onBind(Intent intent) {
         OverlayControllerBinder iBinder;
-        int i = Integer.MAX_VALUE;
+        int clientVersion = Integer.MAX_VALUE;
         synchronized (this) {
             Uri data = intent.getData();
             int port = data.getPort();
+            Log.e("HongLi","get data:" + data.toString() + ";port:" + port + ";Binder.getCallingUid():" + Binder.getCallingUid());
+
             if (port == -1) {
                 iBinder = null;
             } else {
-                int parseInt;
+                int serverVersion;
                 if (port != Binder.getCallingUid()) {
-                    Log.e("OverlaySController", "Calling with an invalid UID, the interface will not work");
+                    Log.e("HongLi", "Calling with another process,current process pid:" + Binder.getCallingUid()
+                            + ";another process pid:" + port);
                 }
                 try {
-                    parseInt = Integer.parseInt(data.getQueryParameter("v"));
+                    serverVersion = Integer.parseInt(data.getQueryParameter("v"));
                 } catch (Exception e) {
                     Log.e("OverlaySController", "Failed parsing server version");
-                    parseInt = i;
+                    serverVersion = clientVersion;
                 }
                 try {
-                    i = Integer.parseInt(data.getQueryParameter("cv"));
+                    clientVersion = Integer.parseInt(data.getQueryParameter("cv"));
                 } catch (Exception e2) {
                     Log.d("OverlaySController", "Client version not available");
                 }
@@ -63,12 +66,12 @@ public abstract class OverlaysController {
                             iBinder = null;
                         } else {
                             iBinder = this.clients.get(port);
-                            if (!(iBinder == null || iBinder.mServerVersion == parseInt)) {
+                            if (!(iBinder == null || iBinder.mServerVersion == serverVersion)) {
                                 iBinder.destroy();
                                 iBinder = null;
                             }
                             if (iBinder == null) {
-                                iBinder = new OverlayControllerBinder(this, port, host, parseInt, i);
+                                iBinder = new OverlayControllerBinder(this, port, host, serverVersion, clientVersion);
                                 this.clients.put(port, iBinder);
                             }
                         }

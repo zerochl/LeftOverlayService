@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if (position == 0) {
                     // Update the overlay scroll if we're at the left-most page
-                    launcherClient.updateMove(1f - positionOffset);
+                    if(null != launcherClient){
+                        launcherClient.updateMove(1f - positionOffset);
+                    }
                 }
             }
 
@@ -44,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 switch (state) {
                     case ViewPager.SCROLL_STATE_IDLE:
                         // Stop scroll and set current item to 1 as this is required for this demo
-                        launcherClient.endMove();
+                        if(null != launcherClient){
+                            launcherClient.endMove();
+                    }
+
                         viewPager.setCurrentItem(1);
                         break;
                     case ViewPager.SCROLL_STATE_DRAGGING:
@@ -52,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         // Start scroll on both user drag and settling even to support usage of
                         // viewPager.setCurrentItem(0, true). Setting current item without animating
                         // is unsupported in this demo.
-                        launcherClient.startMove();
+                        if(null != launcherClient){
+                            launcherClient.startMove();
+                        }
+
                         break;
                 }
             }
