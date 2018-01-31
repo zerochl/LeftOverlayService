@@ -10,7 +10,7 @@ public final class u {
     public static final int ACTION_MOVE = 4;
     public static final int uKP = 3;
     public static final int ACTION_POINTER_1_UP = 6;
-    public static final int uKR = 7;
+    public static final int PAUSE = 7;
     public static final int ACTION_UP = 5;
     public static final int uKT = 2;
 }

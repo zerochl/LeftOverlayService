@@ -149,7 +149,7 @@ abstract class OverlayControllerCallback extends BaseCallback {
                 }
                 this.overlayController.fI(i2);
                 return true;
-            case u.uKR /*7*/:
+            case u.PAUSE /*7*/:
                 if (this.overlayController == null) {
                     return true;
                 }
