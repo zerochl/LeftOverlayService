@@ -28,13 +28,13 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
         boolean HC;
         switch (i) {
             case 1:
-                cnK();
+                startScroll();
                 break;
             case 2:
-                aL(parcel.readFloat());
+                onScroll(parcel.readFloat());
                 break;
             case 3:
-                cnL();
+                endScroll();
                 break;
             case u.ACTION_MOVE /*4*/:
                 LayoutParams layoutParams = (LayoutParams) c.a(parcel, LayoutParams.CREATOR);
@@ -47,13 +47,13 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                         dVar = new f(readStrongBinder);
                     }
                 }
-                onWindowAttached(layoutParams, dVar, parcel.readInt());
+                windowAttached(layoutParams, dVar, parcel.readInt());
                 break;
             case u.ACTION_UP /*5*/:
-                od(c.a(parcel));
+                windowDetached(c.a(parcel));
                 break;
             case u.ACTION_POINTER_1_UP /*6*/:
-                fI(parcel.readInt());
+                closeOverlay(parcel.readInt());
                 break;
             case u.PAUSE /*7*/:
                 onPause();
@@ -93,13 +93,13 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                         dVar = new f(readStrongBinder);
                     }
                 }
-                onWindowAttached(bundle, dVar);
+                windowAttached(bundle, dVar);
                 break;
             case 16:
                 BJ(parcel.readInt());
                 break;
             case 17:
-                HC = onWindowAttached(parcel.createByteArray(), (Bundle) c.a(parcel, Bundle.CREATOR));
+                HC = windowAttached(parcel.createByteArray(), (Bundle) c.a(parcel, Bundle.CREATOR));
                 parcel2.writeNoException();
                 c.a(parcel2, HC);
                 break;

@@ -40,29 +40,29 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         }
     }
 
-    public final synchronized void cnK() {
+    public final synchronized void startScroll() {
         checkCallerId();
         Message.obtain(this.mainThreadHandler, 3).sendToTarget();
     }
 
-    public final synchronized void aL(float f) {
+    public final synchronized void onScroll(float f) {
         checkCallerId();
         Message.obtain(this.mainThreadHandler, 4, f).sendToTarget();
     }
 
-    public final synchronized void cnL() {
+    public final synchronized void endScroll() {
         checkCallerId();
         Message.obtain(this.mainThreadHandler, 5).sendToTarget();
     }
 
-    public final synchronized void onWindowAttached(LayoutParams layoutParams, d dVar, int clientOptions) {
+    public final synchronized void windowAttached(LayoutParams layoutParams, d dVar, int clientOptions) {
         Bundle bundle = new Bundle();
         bundle.putParcelable("layout_params", layoutParams);
         bundle.putInt("client_options", clientOptions);
-        onWindowAttached(bundle, dVar);
+        windowAttached(bundle, dVar);
     }
 
-    public final synchronized void onWindowAttached(Bundle bundle, d dVar) {
+    public final synchronized void windowAttached(Bundle bundle, d dVar) {
         checkCallerId();
         this.overlaysController.handler.removeCallbacks(this);
         Configuration configuration = bundle.getParcelable("configuration");
@@ -72,7 +72,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         Message.obtain(this.mainThreadHandler, 0, 1, 0, Pair.create(bundle, dVar)).sendToTarget();
     }
 
-    public final synchronized void od(boolean z) {
+    public final synchronized void windowDetached(boolean z) {
         checkCallerId();
         Message.obtain(this.mainThreadHandler, 0, 0, 0).sendToTarget();
         this.overlaysController.handler.postDelayed(this, z ? 5000 : 0);
@@ -122,7 +122,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         BJ(3);
     }
 
-    public final synchronized void fI(int i) {
+    public final synchronized void closeOverlay(int i) {
         checkCallerId();
         this.mainThreadHandler.removeMessages(6);
         Message.obtain(this.mainThreadHandler, 6, 0, i).sendToTarget();
@@ -134,7 +134,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         Message.obtain(this.mainThreadHandler, 6, 1, i).sendToTarget();
     }
 
-    public final synchronized boolean onWindowAttached(byte[] bArr, Bundle bundle) {
+    public final synchronized boolean windowAttached(byte[] bArr, Bundle bundle) {
         Message.obtain(this.mainThreadHandler, 8, new ByteBundleHolder(bArr, bundle)).sendToTarget();
         return true;
     }
@@ -187,7 +187,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         }
     }
 
-    final void onWindowAttached(d dVar, int i) {
+    final void windowAttached(d dVar, int i) {
         if (dVar != null) {
             try {
                 dVar.BI(this.overlaysController.Hx() | i);

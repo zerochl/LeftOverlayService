@@ -111,7 +111,7 @@ abstract class OverlayControllerCallback extends BaseCallback {
                     overlayControllerVar2 = this.overlayController;
                     overlayControllerVar2.uoa = (com.google.android.libraries.i.d) pair.second;
                     overlayControllerVar2.bP(true);
-                    this.overlayControllerBinder.onWindowAttached((com.google.android.libraries.i.d) pair.second, this.uor);
+                    this.overlayControllerBinder.windowAttached((com.google.android.libraries.i.d) pair.second, this.uor);
                     return true;
                 } catch (Throwable e) {
                     Log.d("OverlaySController", "Error creating overlay window", e);
@@ -136,7 +136,7 @@ abstract class OverlayControllerCallback extends BaseCallback {
                 if (message.arg1 != 0) {
                     return true;
                 }
-                this.overlayControllerBinder.onWindowAttached(cnC, 0);
+                this.overlayControllerBinder.windowAttached(cnC, 0);
                 return true;
             case u.ACTION_POINTER_1_UP /*6*/:
                 if (this.overlayController == null) {

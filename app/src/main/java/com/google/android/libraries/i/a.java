@@ -13,23 +13,23 @@ public interface a extends IInterface {
 
     boolean HC();
 
-    void onWindowAttached(Bundle bundle, d dVar);
+    void windowAttached(Bundle bundle, d dVar);
 
-    void onWindowAttached(LayoutParams layoutParams, d dVar, int i);
+    void windowAttached(LayoutParams layoutParams, d dVar, int i);
 
-    boolean onWindowAttached(byte[] bArr, Bundle bundle);
+    boolean windowAttached(byte[] bArr, Bundle bundle);
 
-    void aL(float f);
+    void onScroll(float f);
 
-    void cnK();
+    void startScroll();
 
-    void cnL();
+    void endScroll();
 
     boolean cnM();
 
-    void fI(int i);
+    void closeOverlay(int i);
 
-    void od(boolean z);
+    void windowDetached(boolean z);
 
     void oe(boolean z);
 
