@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.util.Pair;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 
@@ -72,7 +74,10 @@ abstract class OverlayControllerCallback extends BaseCallback {
                     overlayControllerVar3.slidingPanelLayout.uoH = overlayControllerVar3.overlayControllerStateChanger;
                     layoutParams.width = -1;
                     layoutParams.height = -1;
-                    layoutParams.flags |= 8650752;
+//                    layoutParams.flags |= 8650752;
+                    layoutParams.flags
+                            |= WindowManager.LayoutParams.FLAG_SPLIT_TOUCH
+                            | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
                     layoutParams.dimAmount = 0.0f;
                     layoutParams.gravity = 3;
                     if (VERSION.SDK_INT >= 25) {
@@ -83,7 +88,8 @@ abstract class OverlayControllerCallback extends BaseCallback {
                     layoutParams.type = i;
                     layoutParams.softInputMode = 16;
                     overlayControllerVar3.window.setAttributes(layoutParams);
-                    overlayControllerVar3.window.clearFlags(1048576);
+//                    overlayControllerVar3.window.clearFlags(1048576);
+                    overlayControllerVar3.window.clearFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
                     overlayControllerVar3.onCreate(bundle3);
                     overlayControllerVar3.window.setContentView(overlayControllerVar3.slidingPanelLayout);
                     overlayControllerVar3.windowView = overlayControllerVar3.window.getDecorView();
