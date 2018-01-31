@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import java.io.PrintWriter;
 
@@ -212,9 +213,12 @@ public class OverlayController extends DialogOverlayController {
 
     public final void setVisible(boolean z) {
         if (z) {
-            this.window.clearFlags(24);
+//            this.window.clearFlags(24);
+            this.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                    | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE );
         } else {
-            this.window.addFlags(24);
+            this.window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                    | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE );
         }
     }
 

@@ -13,11 +13,11 @@ public interface a extends IInterface {
 
     boolean HC();
 
-    void a(Bundle bundle, d dVar);
+    void onWindowAttached(Bundle bundle, d dVar);
 
-    void a(LayoutParams layoutParams, d dVar, int i);
+    void onWindowAttached(LayoutParams layoutParams, d dVar, int i);
 
-    boolean a(byte[] bArr, Bundle bundle);
+    boolean onWindowAttached(byte[] bArr, Bundle bundle);
 
     void aL(float f);
 

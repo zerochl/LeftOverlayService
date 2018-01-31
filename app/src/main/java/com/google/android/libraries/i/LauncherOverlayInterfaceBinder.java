@@ -47,7 +47,7 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                         dVar = new f(readStrongBinder);
                     }
                 }
-                a(layoutParams, dVar, parcel.readInt());
+                onWindowAttached(layoutParams, dVar, parcel.readInt());
                 break;
             case u.ACTION_UP /*5*/:
                 od(c.a(parcel));
@@ -93,13 +93,13 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                         dVar = new f(readStrongBinder);
                     }
                 }
-                a(bundle, dVar);
+                onWindowAttached(bundle, dVar);
                 break;
             case 16:
                 BJ(parcel.readInt());
                 break;
             case 17:
-                HC = a(parcel.createByteArray(), (Bundle) c.a(parcel, Bundle.CREATOR));
+                HC = onWindowAttached(parcel.createByteArray(), (Bundle) c.a(parcel, Bundle.CREATOR));
                 parcel2.writeNoException();
                 c.a(parcel2, HC);
                 break;

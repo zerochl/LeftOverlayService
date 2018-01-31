@@ -55,14 +55,14 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         Message.obtain(this.mainThreadHandler, 5).sendToTarget();
     }
 
-    public final synchronized void a(LayoutParams layoutParams, d dVar, int clientOptions) {
+    public final synchronized void onWindowAttached(LayoutParams layoutParams, d dVar, int clientOptions) {
         Bundle bundle = new Bundle();
         bundle.putParcelable("layout_params", layoutParams);
         bundle.putInt("client_options", clientOptions);
-        a(bundle, dVar);
+        onWindowAttached(bundle, dVar);
     }
 
-    public final synchronized void a(Bundle bundle, d dVar) {
+    public final synchronized void onWindowAttached(Bundle bundle, d dVar) {
         checkCallerId();
         this.overlaysController.handler.removeCallbacks(this);
         Configuration configuration = bundle.getParcelable("configuration");
@@ -134,7 +134,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         Message.obtain(this.mainThreadHandler, 6, 1, i).sendToTarget();
     }
 
-    public final synchronized boolean a(byte[] bArr, Bundle bundle) {
+    public final synchronized boolean onWindowAttached(byte[] bArr, Bundle bundle) {
         Message.obtain(this.mainThreadHandler, 8, new ByteBundleHolder(bArr, bundle)).sendToTarget();
         return true;
     }
@@ -187,7 +187,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         }
     }
 
-    final void a(d dVar, int i) {
+    final void onWindowAttached(d dVar, int i) {
         if (dVar != null) {
             try {
                 dVar.BI(this.overlaysController.Hx() | i);

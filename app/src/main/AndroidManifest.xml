@@ -19,7 +19,7 @@
         <service
             android:name="com.google.android.apps.gsa.nowoverlayservice.DrawerOverlayService"
             android:exported="true"
-            android:process=":search">
+            >
             <intent-filter>
                 <action android:name="cn.zero.launcher.bind.FIRST" />
                 <data android:scheme="app" />

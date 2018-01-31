@@ -7,9 +7,9 @@
 //import android.os.RemoteException;
 //import android.view.WindowManager;
 //
-//import com.google.android.a.LauncherOverlayBinder;
-//import com.google.android.a.c;
-//import com.google.android.libraries.i.a;
+//import com.google.android.onWindowAttached.LauncherOverlayBinder;
+//import com.google.android.onWindowAttached.c;
+//import com.google.android.libraries.i.onWindowAttached;
 //import com.google.android.libraries.i.d;
 //import com.google.android.libraries.i.f;
 //import com.google.android.libraries.material.progress.u;
@@ -18,7 +18,7 @@
 // * Created by zero on 2018/1/22.
 // */
 //
-//public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBinder implements a {
+//public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBinder implements onWindowAttached {
 //
 //    public LauncherOverlayInterfaceBinder() {
 //        attachInterface(this, "com.google.android.libraries.launcherclient.ILauncherOverlay");
@@ -26,7 +26,7 @@
 //
 //    public boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) throws RemoteException {//Todo: throws is new
 //        d dVar = null;
-//        if (a(i, parcel, parcel2, i2)) {
+//        if (onWindowAttached(i, parcel, parcel2, i2)) {
 //            return true;
 //        }
 //        IBinder readStrongBinder;
@@ -43,7 +43,7 @@
 //                cnL();
 //                break;
 //            case u.ACTION_MOVE /*4*/:
-//                WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) c.a(parcel, WindowManager.LayoutParams.CREATOR);
+//                WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) c.onWindowAttached(parcel, WindowManager.LayoutParams.CREATOR);
 //                readStrongBinder = parcel.readStrongBinder();
 //                if (readStrongBinder != null) {
 //                    queryLocalInterface = readStrongBinder.queryLocalInterface("com.google.android.libraries.launcherclient.ILauncherOverlayCallback");
@@ -53,10 +53,10 @@
 //                        dVar = new f(readStrongBinder);
 //                    }
 //                }
-//                a(layoutParams, dVar, parcel.readInt());
+//                onWindowAttached(layoutParams, dVar, parcel.readInt());
 //                break;
 //            case u.ACTION_UP /*5*/:
-//                od(c.a(parcel));
+//                od(c.onWindowAttached(parcel));
 //                break;
 //            case u.ACTION_POINTER_1_UP /*6*/:
 //                fI(parcel.readInt());
@@ -71,7 +71,7 @@
 //                BK(parcel.readInt());
 //                break;
 //            case 10:
-//                oe(c.a(parcel));
+//                oe(c.onWindowAttached(parcel));
 //                break;
 //            case 11:
 //                String HB = HB();
@@ -81,15 +81,15 @@
 //            case /*ModuleDescriptor.MODULE_VERSION*/12 /*12*/://Todo: modified, 12 was always there but the constant was there before
 //                HC = HC();
 //                parcel2.writeNoException();
-//                c.a(parcel2, HC);
+//                c.onWindowAttached(parcel2, HC);
 //                break;
 //            case 13:
 //                HC = cnM();
 //                parcel2.writeNoException();
-//                c.a(parcel2, HC);
+//                c.onWindowAttached(parcel2, HC);
 //                break;
 //            case 14:
-//                Bundle bundle = (Bundle) c.a(parcel, Bundle.CREATOR);
+//                Bundle bundle = (Bundle) c.onWindowAttached(parcel, Bundle.CREATOR);
 //                readStrongBinder = parcel.readStrongBinder();
 //                if (readStrongBinder != null) {
 //                    queryLocalInterface = readStrongBinder.queryLocalInterface("com.google.android.libraries.launcherclient.ILauncherOverlayCallback");
@@ -99,15 +99,15 @@
 //                        dVar = new f(readStrongBinder);
 //                    }
 //                }
-//                a(bundle, dVar);
+//                onWindowAttached(bundle, dVar);
 //                break;
 //            case 16:
 //                BJ(parcel.readInt());
 //                break;
 //            case 17:
-//                HC = a(parcel.createByteArray(), (Bundle) c.a(parcel, Bundle.CREATOR));
+//                HC = onWindowAttached(parcel.createByteArray(), (Bundle) c.onWindowAttached(parcel, Bundle.CREATOR));
 //                parcel2.writeNoException();
-//                c.a(parcel2, HC);
+//                c.onWindowAttached(parcel2, HC);
 //                break;
 //            default:
 //                return false;
