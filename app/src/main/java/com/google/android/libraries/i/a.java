@@ -7,7 +7,7 @@ import android.view.WindowManager.LayoutParams;
 public interface a extends IInterface {
     void BJ(int i);
 
-    void BK(int i);
+    void openOverlay(int i);
 
     String HB();
 

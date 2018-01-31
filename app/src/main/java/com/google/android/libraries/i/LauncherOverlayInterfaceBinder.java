@@ -62,7 +62,7 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                 onResume();
                 break;
             case 9:
-                BK(parcel.readInt());
+                openOverlay(parcel.readInt());
                 break;
             case 10:
                 oe(c.a(parcel));

@@ -128,7 +128,7 @@ final class OverlayControllerBinder extends LauncherOverlayInterfaceBinder imple
         Message.obtain(this.mainThreadHandler, 6, 0, i).sendToTarget();
     }
 
-    public final synchronized void BK(int i) {
+    public final synchronized void openOverlay(int i) {
         checkCallerId();
         this.mainThreadHandler.removeMessages(6);
         Message.obtain(this.mainThreadHandler, 6, 1, i).sendToTarget();
