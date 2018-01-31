@@ -9,7 +9,7 @@ final class SlidingPanelLayoutProperty extends Property {
     }
 
     public final /* synthetic */ Object get(Object obj) {
-        return ((SlidingPanelLayout) obj).uoC;
+        return ((SlidingPanelLayout) obj).threshold;
     }
 
     public final /* synthetic */ void set(Object obj, Object obj2) {

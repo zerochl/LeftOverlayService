@@ -46,7 +46,7 @@ final class SlidingPanelLayoutInterpolator extends AnimatorListenerAdapter imple
         SlidingPanelLayout slidingPanelLayoutVar = this.slidingPanelLayout;
         if (slidingPanelLayoutVar.mSettling) {
             slidingPanelLayoutVar.mSettling = false;
-            if (slidingPanelLayoutVar.uoC == 0) {
+            if (slidingPanelLayoutVar.threshold == 0) {
                 if (SlidingPanelLayout.DEBUG) {
                     Log.d("wo.SlidingPanelLayout", "onPanelClosed");
                 }
@@ -56,7 +56,7 @@ final class SlidingPanelLayoutInterpolator extends AnimatorListenerAdapter imple
                 if (slidingPanelLayoutVar.uoH != null) {
                     slidingPanelLayoutVar.uoH.close();
                 }
-            } else if (slidingPanelLayoutVar.uoC == slidingPanelLayoutVar.getMeasuredWidth()) {
+            } else if (slidingPanelLayoutVar.threshold == slidingPanelLayoutVar.getMeasuredWidth()) {
                 slidingPanelLayoutVar.cnG();
             }
         }

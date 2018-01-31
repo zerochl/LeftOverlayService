@@ -97,8 +97,8 @@ abstract class OverlayControllerCallback extends BaseCallback {
                         if (bundle.getBoolean("open")) {
                             SlidingPanelLayout slidingPanelLayoutVar = overlayControllerVar.slidingPanelLayout;
                             slidingPanelLayoutVar.mPanelPositionRatio = 1.0f;
-                            slidingPanelLayoutVar.uoC = slidingPanelLayoutVar.getMeasuredWidth();
-                            slidingPanelLayoutVar.uoA.setTranslationX(slidingPanelLayoutVar.mIsRtl ? (float) (-slidingPanelLayoutVar.uoC) : (float) slidingPanelLayoutVar.uoC);
+                            slidingPanelLayoutVar.threshold = slidingPanelLayoutVar.getMeasuredWidth();
+                            slidingPanelLayoutVar.uoA.setTranslationX(slidingPanelLayoutVar.mIsRtl ? (float) (-slidingPanelLayoutVar.threshold) : (float) slidingPanelLayoutVar.threshold);
                             slidingPanelLayoutVar.cnF();
                             slidingPanelLayoutVar.cnG();
                         }

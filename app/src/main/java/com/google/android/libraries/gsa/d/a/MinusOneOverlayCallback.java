@@ -32,41 +32,42 @@ public final class MinusOneOverlayCallback extends OverlayControllerCallback {
         OverlayController overlayControllerVar;
         long when;
         switch (message.what) {
+            //ACTION_DOWN
             case 3:
                 if (this.overlayController != null) {
                     overlayControllerVar = this.overlayController;
                     when = message.getWhen();
                     if (!overlayControllerVar.cnD()) {
                         SlidingPanelLayout slidingPanelLayoutVar = overlayControllerVar.slidingPanelLayout;
-                        if (slidingPanelLayoutVar.uoC < slidingPanelLayoutVar.mTouchSlop) {
+                        if (slidingPanelLayoutVar.threshold < slidingPanelLayoutVar.mTouchSlop) {
                             overlayControllerVar.slidingPanelLayout.BM(0);
                             overlayControllerVar.mAcceptExternalMove = true;
-                            overlayControllerVar.unX = 0;
+                            overlayControllerVar.offsetX = 0;
                             overlayControllerVar.slidingPanelLayout.mForceDrag = true;
-                            overlayControllerVar.obZ = when - 30;
-                            overlayControllerVar.b(0, overlayControllerVar.unX, overlayControllerVar.obZ);
-                            overlayControllerVar.b(2, overlayControllerVar.unX, when);
+                            overlayControllerVar.downTime = when - 30;
+                            overlayControllerVar.dispatchTouchEvent(0, overlayControllerVar.offsetX, overlayControllerVar.downTime);
+                            overlayControllerVar.dispatchTouchEvent(2, overlayControllerVar.offsetX, when);
                         }
                     }
                 }
                 return true;
-            case u.uKO /*4*/:
+            case u.ACTION_MOVE /*4*/:
                 if (this.overlayController != null) {
                     overlayControllerVar = this.overlayController;
                     float floatValue = (float) message.obj;
                     when = message.getWhen();
                     if (overlayControllerVar.mAcceptExternalMove) {
-                        overlayControllerVar.unX = (int) (floatValue * ((float) overlayControllerVar.slidingPanelLayout.getMeasuredWidth()));
-                        overlayControllerVar.b(2, overlayControllerVar.unX, when);
+                        overlayControllerVar.offsetX = (int) (floatValue * ((float) overlayControllerVar.slidingPanelLayout.getMeasuredWidth()));
+                        overlayControllerVar.dispatchTouchEvent(2, overlayControllerVar.offsetX, when);
                     }
                 }
                 return true;
-            case u.uKS /*5*/:
+            case u.ACTION_UP /*5*/:
                 if (this.overlayController != null) {
                     overlayControllerVar = this.overlayController;
                     when = message.getWhen();
                     if (overlayControllerVar.mAcceptExternalMove) {
-                        overlayControllerVar.b(1, overlayControllerVar.unX, when);
+                        overlayControllerVar.dispatchTouchEvent(1, overlayControllerVar.offsetX, when);
                     }
                     overlayControllerVar.mAcceptExternalMove = false;
                 }

@@ -36,7 +36,7 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
             case 3:
                 cnL();
                 break;
-            case u.uKO /*4*/:
+            case u.ACTION_MOVE /*4*/:
                 LayoutParams layoutParams = (LayoutParams) c.a(parcel, LayoutParams.CREATOR);
                 readStrongBinder = parcel.readStrongBinder();
                 if (readStrongBinder != null) {
@@ -49,7 +49,7 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
                 }
                 a(layoutParams, dVar, parcel.readInt());
                 break;
-            case u.uKS /*5*/:
+            case u.ACTION_UP /*5*/:
                 od(c.a(parcel));
                 break;
             case u.uKQ /*6*/:

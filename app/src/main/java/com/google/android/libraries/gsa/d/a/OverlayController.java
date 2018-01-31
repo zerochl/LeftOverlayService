@@ -11,13 +11,13 @@ import java.io.PrintWriter;
 public class OverlayController extends DialogOverlayController {
 
     public boolean mIsRtl;
-    public long obZ = 0;
+    public long downTime = 0;
     public int mWindowShift;
     public String mPackageName;
     public SlidingPanelLayout slidingPanelLayout;
     public t overlayControllerStateChanger = new OverlayControllerStateChanger(this);
     public FrameLayout container;
-    public int unX = 0;
+    public int offsetX = 0;
     public boolean mAcceptExternalMove = false;
     public boolean unZ = true;
     public com.google.android.libraries.i.d uoa;
@@ -28,8 +28,8 @@ public class OverlayController extends DialogOverlayController {
         super(context, theme, dialogTheme);
     }
 
-    final void b(int i, int i2, long j) {
-        MotionEvent obtain = MotionEvent.obtain(this.obZ, j, i, this.mIsRtl ? (float) (-i2) : (float) i2, 0.0f, 0);
+    final void dispatchTouchEvent(int action, int x, long eventTime) {
+        MotionEvent obtain = MotionEvent.obtain(this.downTime, eventTime, action, this.mIsRtl ? (float) (-x) : (float) x, 0.0f, 0);
         obtain.setSource(4098);
         this.slidingPanelLayout.dispatchTouchEvent(obtain);
         obtain.recycle();

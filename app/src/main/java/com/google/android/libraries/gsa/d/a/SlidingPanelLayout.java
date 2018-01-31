@@ -35,7 +35,7 @@ public class SlidingPanelLayout extends FrameLayout {
     public VelocityTracker mVelocityTracker;
     public View uoA;
     public View uoB;
-    public int uoC;
+    public int threshold;
     public float mPanelPositionRatio;
     public float uoE;
     public float uoF;
@@ -70,8 +70,8 @@ public class SlidingPanelLayout extends FrameLayout {
         }
         int measuredWidth = getMeasuredWidth();
         this.mPanelPositionRatio = ((float) i) / ((float) measuredWidth);
-        this.uoC = Math.max(Math.min(i, measuredWidth), 0);
-        this.uoA.setTranslationX(this.mIsRtl ? (float) (-this.uoC) : (float) this.uoC);
+        this.threshold = Math.max(Math.min(i, measuredWidth), 0);
+        this.uoA.setTranslationX(this.mIsRtl ? (float) (-this.threshold) : (float) this.threshold);
         if (uoK) {
             this.uoA.setAlpha(Math.max(0.1f, this.decelerateInterpolator.getInterpolation(this.mPanelPositionRatio)));
         }
@@ -133,11 +133,11 @@ public class SlidingPanelLayout extends FrameLayout {
                 }
                 this.mDownX = x;
                 this.mDownY = y;
-                this.uoF = (float) this.uoC;
+                this.uoF = (float) this.threshold;
                 this.mLastMotionX = x;
                 this.mTotalMotionX = 0.0f;
                 this.mActivePointerId = motionEvent.getPointerId(0);
-                action = Math.abs(this.slidingPanelLayoutInterpolator.mFinalX - this.uoC);
+                action = Math.abs(this.slidingPanelLayoutInterpolator.mFinalX - this.threshold);
                 if (this.slidingPanelLayoutInterpolator.isFinished() || action < this.mTouchSlop / 3) {
                     z = true;
                 } else {
@@ -187,11 +187,11 @@ public class SlidingPanelLayout extends FrameLayout {
                 y = motionEvent.getY();
                 this.mDownX = x;
                 this.mDownY = y;
-                this.uoF = (float) this.uoC;
+                this.uoF = (float) this.threshold;
                 this.mLastMotionX = x;
                 this.mTotalMotionX = 0.0f;
                 this.mActivePointerId = motionEvent.getPointerId(0);
-                abs = Math.abs(this.slidingPanelLayoutInterpolator.mFinalX - this.uoC);
+                abs = Math.abs(this.slidingPanelLayoutInterpolator.mFinalX - this.threshold);
                 if (this.slidingPanelLayoutInterpolator.isFinished() || abs < this.mTouchSlop / 3) {
                     z = true;
                 } else {
@@ -223,7 +223,7 @@ public class SlidingPanelLayout extends FrameLayout {
                             closePanel(750);
                         }
                     } else {
-                        float measuredWidth = ((float) (getMeasuredWidth() / 2)) + (((float) Math.sin((double) ((float) (((double) (Math.min(1.0f, (((float) (abs < 0 ? this.uoC : getMeasuredWidth() - this.uoC)) * 1.0f) / ((float) getMeasuredWidth())) - 0.5f)) * 0.4712389167638204d)))) * ((float) (getMeasuredWidth() / 2)));
+                        float measuredWidth = ((float) (getMeasuredWidth() / 2)) + (((float) Math.sin((double) ((float) (((double) (Math.min(1.0f, (((float) (abs < 0 ? this.threshold : getMeasuredWidth() - this.threshold)) * 1.0f) / ((float) getMeasuredWidth())) - 0.5f)) * 0.4712389167638204d)))) * ((float) (getMeasuredWidth() / 2)));
                         if (abs > 0) {
                             z2 = true;
                         } else {
@@ -237,7 +237,7 @@ public class SlidingPanelLayout extends FrameLayout {
                         }
                     }
                 } else {
-                    if (this.uoC >= getMeasuredWidth() / 2) {
+                    if (this.threshold >= getMeasuredWidth() / 2) {
                         fv(750);
                     } else {//Todo: this else was not there initially
                         closePanel(750);

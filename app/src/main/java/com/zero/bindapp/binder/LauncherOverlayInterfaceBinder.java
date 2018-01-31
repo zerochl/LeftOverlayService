@@ -42,7 +42,7 @@
 //            case 3:
 //                cnL();
 //                break;
-//            case u.uKO /*4*/:
+//            case u.ACTION_MOVE /*4*/:
 //                WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) c.a(parcel, WindowManager.LayoutParams.CREATOR);
 //                readStrongBinder = parcel.readStrongBinder();
 //                if (readStrongBinder != null) {
@@ -55,7 +55,7 @@
 //                }
 //                a(layoutParams, dVar, parcel.readInt());
 //                break;
-//            case u.uKS /*5*/:
+//            case u.ACTION_UP /*5*/:
 //                od(c.a(parcel));
 //                break;
 //            case u.uKQ /*6*/:
