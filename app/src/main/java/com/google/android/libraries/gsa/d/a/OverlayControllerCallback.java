@@ -99,8 +99,8 @@ abstract class OverlayControllerCallback extends BaseCallback {
                             slidingPanelLayoutVar.mPanelPositionRatio = 1.0f;
                             slidingPanelLayoutVar.threshold = slidingPanelLayoutVar.getMeasuredWidth();
                             slidingPanelLayoutVar.uoA.setTranslationX(slidingPanelLayoutVar.mIsRtl ? (float) (-slidingPanelLayoutVar.threshold) : (float) slidingPanelLayoutVar.threshold);
-                            slidingPanelLayoutVar.cnF();
-                            slidingPanelLayoutVar.cnG();
+                            slidingPanelLayoutVar.onPanelOpening();
+                            slidingPanelLayoutVar.onPanelOpened();
                         }
                     }
                     overlayControllerVar2 = this.overlayController;
@@ -133,7 +133,7 @@ abstract class OverlayControllerCallback extends BaseCallback {
                 }
                 this.overlayControllerBinder.a(cnC, 0);
                 return true;
-            case u.uKQ /*6*/:
+            case u.ACTION_POINTER_1_UP /*6*/:
                 if (this.overlayController == null) {
                     return true;
                 }

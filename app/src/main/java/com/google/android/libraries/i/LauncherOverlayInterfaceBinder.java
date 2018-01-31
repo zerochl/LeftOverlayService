@@ -52,7 +52,7 @@ public abstract class LauncherOverlayInterfaceBinder extends LauncherOverlayBind
             case u.ACTION_UP /*5*/:
                 od(c.a(parcel));
                 break;
-            case u.uKQ /*6*/:
+            case u.ACTION_POINTER_1_UP /*6*/:
                 fI(parcel.readInt());
                 break;
             case u.uKR /*7*/:

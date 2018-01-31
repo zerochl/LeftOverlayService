@@ -35,7 +35,7 @@ final class OverlayControllerStateChanger implements t {
         overlayControllerVar.window.setAttributes(attributes);
     }
 
-    public final void cnF() {
+    public final void opening() {
         OverlayController overlayControllerVar = this.overlayController;
         PanelState panelStateVar = PanelState.DRAGGING;//Todo: PanelState.uof was default
         if (overlayControllerVar.panelState != panelStateVar) {

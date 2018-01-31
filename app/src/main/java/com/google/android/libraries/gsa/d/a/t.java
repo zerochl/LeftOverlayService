@@ -5,7 +5,7 @@ interface t {
 
     void drag();
 
-    void cnF();
+    void opening();
 
     void open();
 

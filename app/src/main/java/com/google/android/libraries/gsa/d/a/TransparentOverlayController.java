@@ -16,7 +16,7 @@ final class TransparentOverlayController implements t {
         Log.d("wo.OverlayController", "Drag event called in transparent mode");
     }
 
-    public final void cnF() {
+    public final void opening() {
     }
 
     public final void oc(boolean z) {

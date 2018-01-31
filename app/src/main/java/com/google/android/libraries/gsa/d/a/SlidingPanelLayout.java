@@ -81,7 +81,7 @@ public class SlidingPanelLayout extends FrameLayout {
     }
 
     final void fv(int i) {
-        cnF();
+        onPanelOpening();
         this.mSettling = true;
         this.slidingPanelLayoutInterpolator.dt(getMeasuredWidth(), i);
     }
@@ -145,7 +145,7 @@ public class SlidingPanelLayout extends FrameLayout {
                 }
                 if (!z || this.mForceDrag) {
                     this.mForceDrag = false;
-                    cnN();
+                    onDragStarted();
                     this.uoE = x;
                     break;
                 }
@@ -160,7 +160,7 @@ public class SlidingPanelLayout extends FrameLayout {
                     break;
                 }
                 break;
-            case com.google.android.libraries.material.progress.u.uKQ /*6*/:
+            case com.google.android.libraries.material.progress.u.ACTION_POINTER_1_UP /*6*/:
                 onSecondaryPointerUp(motionEvent);
                 releaseVelocityTracker();
                 break;
@@ -201,7 +201,7 @@ public class SlidingPanelLayout extends FrameLayout {
                     return true;
                 }
                 this.mForceDrag = false;
-                cnN();
+                onDragStarted();
                 this.uoE = x;
                 return true;
             case MotionEvent.ACTION_UP:
@@ -264,7 +264,7 @@ public class SlidingPanelLayout extends FrameLayout {
                 }
                 determineScrollingStart(motionEvent, 1.0f);
                 return true;
-            case com.google.android.libraries.material.progress.u.uKQ /*6*/:
+            case com.google.android.libraries.material.progress.u.ACTION_POINTER_1_UP /*6*/:
                 onSecondaryPointerUp(motionEvent);
                 releaseVelocityTracker();
                 return true;
@@ -303,7 +303,7 @@ public class SlidingPanelLayout extends FrameLayout {
                 this.mTotalMotionX += Math.abs(this.mLastMotionX - x);
                 this.uoE = x;
                 this.mLastMotionX = x;
-                cnN();
+                onDragStarted();
             }
         }
     }
@@ -361,7 +361,7 @@ public class SlidingPanelLayout extends FrameLayout {
         return true;
     }
 
-    private final void cnN() {
+    private final void onDragStarted() {
         this.mTouchState = 1;
         this.mIsPageMoving = true;
         this.mSettling = false;
@@ -377,17 +377,17 @@ public class SlidingPanelLayout extends FrameLayout {
         }
     }
 
-    final void cnF() {
+    final void onPanelOpening() {
         if (DEBUG) {
             Log.d("wo.SlidingPanelLayout", "onPanelOpening");
         }
         this.mIsPageMoving = true;
         if (this.uoH != null) {
-            this.uoH.cnF();
+            this.uoH.opening();
         }
     }
 
-    final void cnG() {
+    final void onPanelOpened() {
         if (DEBUG) {
             Log.d("wo.SlidingPanelLayout", "onPanelOpened");
         }
